@@ -134,6 +134,8 @@ def listing(request, id):
         elif request.POST.get("add_comment"):
             c = Comment(commenter=request.user, item=listing, comment=request.POST.get("add_comment"))
             c.save()
+        else:
+            return render(request, "auctions/error.html")
         return render(request, "auctions/listing.html", {
             'listing': Listing.objects.get(pk=id),
             'watchlist': w,
