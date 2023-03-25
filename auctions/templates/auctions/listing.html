@@ -24,8 +24,9 @@
 {% if request.user != listing.lister and user.is_authenticated and listing.active %}
 <form action="{% url 'listing' listing.pk %}" method="POST">
     {% csrf_token %}
-    <h4>Place bid</h4>
-    <input name="bid" type="number" step=0.01 min="{{ listing.bids.amount }}" placeholder="Bid">
+    <h4>Place bid ($)</h4>
+
+    <input name="bid" type="number" step=0.01 min="{{ listing.bids.amount }}" placeholder="Bid ${{ listing.bids.amount }}+">
     <input type="submit" value="Bid">
 </form>
 {% elif not listing.active %}

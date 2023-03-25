@@ -3,7 +3,7 @@
 {% block body %}
 <ul>
 {% for listing in listings %}
-    <li><a href="{% url 'listing' listing.pk %}">{{ listing.title }}</a></li>
+    <li><a href="{% url 'listing' listing.pk %}">{{ listing.title }} {% if not listing.active %}(ended){% endif %}</a></li>
 {% endfor %}
 </ul>
 {% endblock %}
